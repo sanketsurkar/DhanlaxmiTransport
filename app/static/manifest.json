@@ -1,0 +1,10 @@
+{
+  "name": "DhanlaxmiTransport",
+  "short_name": "Dhanlaxmi",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#4338ca",
+  "icons": [{ "src": "/static/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

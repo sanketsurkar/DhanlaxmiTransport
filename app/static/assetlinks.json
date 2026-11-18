@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.onrender.dhanlaxmitransport.twa",
+        "sha256_cert_fingerprints": ["A3:3C:9F:86:BF:10:10:84:CE:52:AE:D4:44:10:80:99:B7:A8:8F:10:BF:7F:AD:DD:15:7C:2F:2F:C8:57:13:BA"]
+      }
+    }]

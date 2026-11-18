@@ -1,3 +1,4 @@
+import json
 from contextlib import asynccontextmanager
 from pathlib import Path
 from fastapi import FastAPI, Request
@@ -10,6 +11,8 @@ from app.database import Base, engine, SessionLocal
 from app.routers import auth, users, masters, trips, payroll, dashboard, notifications
 from app.routers.notifications import push_router
 from app.seed import seed
+
+
 
 STATIC = Path(__file__).parent / "static"
 
@@ -57,6 +60,12 @@ app.include_router(push_router)
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
 NO_CACHE = {"Cache-Control": "no-cache"}
 
+@app.get("/.well-known/assetlinks.json", include_in_schema=False)
+def assetlinks():
+    """Digital Asset Links: removes the browser bar in the Android app."""
+    f = STATIC / "assetlinks.json"
+    data = json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
+    return JSONResponse(data)
 
 @app.get("/sw.js", include_in_schema=False)
 def service_worker():

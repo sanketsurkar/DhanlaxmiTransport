@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'transportpro.db'}")
 SECRET_KEY = os.getenv("SECRET_KEY", "change-this-secret-key-in-production")
 TOKEN_HOURS = int(os.getenv("TOKEN_HOURS", "12"))
-APP_VERSION = "3.1"   # bump -> phones load the new app.js / app.css
+APP_VERSION = "3.2"   # bump -> phones load the new app.js / app.css
 
 # Web Push keys: environment variables, or vapid.json (created automatically on first start)
 VAPID_FILE = BASE_DIR / "vapid.json"

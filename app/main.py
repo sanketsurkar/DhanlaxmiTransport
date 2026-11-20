@@ -66,7 +66,14 @@ def assetlinks():
     f = STATIC / "assetlinks.json"
     data = json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
     return JSONResponse(data)
-
+    
+@app.api_route("/health", methods=["GET", "HEAD"], include_in_schema=False)
+def health():
+    """Keep-alive check: wakes Render and runs a tiny query so Supabase stays active too."""
+    with SessionLocal() as db:
+        db.execute(text("SELECT 1"))
+    return {"status": "ok"}
+    
 @app.get("/sw.js", include_in_schema=False)
 def service_worker():
     js = (STATIC / "sw.js").read_text(encoding="utf-8").replace("{{V}}", APP_VERSION)

@@ -159,21 +159,21 @@ class Notification(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
-#class PushSubscription(Base):
-  #  """One row per phone/browser that allowed notifications."""
-   # __tablename__ = "push_subscriptions"
-  #  id = Column(Integer, primary_key=True)
-   # user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
-   # endpoint = Column(String(1000), unique=True, nullable=False)
-   # p256dh = Column(String(200), nullable=False)
-   # auth = Column(String(100), nullable=False)
-   # created_at = Column(DateTime, default=datetime.utcnow)
-
 class PushSubscription(Base):
+    """One row per phone/browser that allowed notifications."""
     __tablename__ = "push_subscriptions"
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("users.id"), index=True)
-    endpoint = Column(Text, unique=True, nullable=False)
-    p256dh = Column(Text, nullable=False)
-    auth = Column(Text, nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    endpoint = Column(String(1000), unique=True, nullable=False)
+    p256dh = Column(String(200), nullable=False)
+    auth = Column(String(100), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+#class PushSubscription(Base):
+ #   __tablename__ = "push_subscriptions"
+ #   id = Column(Integer, primary_key=True)
+ #   user_id = Column(Integer, ForeignKey("users.id"), index=True)
+  #  endpoint = Column(Text, unique=True, nullable=False)
+  #  p256dh = Column(Text, nullable=False)
+  #  auth = Column(Text, nullable=False)
+  #  created_at = Column(DateTime, default=datetime.utcnow)
